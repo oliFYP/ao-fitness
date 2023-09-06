@@ -1,19 +1,19 @@
 import React from 'react';
+import { BrowserRouter , Routes, Route } from 'react-router-dom';
+import Home from './pages/Home.js';
 
-import MainSection from './components/MainSection';
-import AboutUs from './components/AboutUs';
-import Footer from './components/Footer';
-import StartJourney from './components/StartJourney';
 
 
 
 function App() {
   return (
     <div>
-      <MainSection />
-      <StartJourney/>
-      <AboutUs/>
-      <Footer/>
+      <BrowserRouter>
+      <Routes>
+        <Route index element={<Home/>}/>
+   
+      </Routes>
+      </BrowserRouter>
     </div>
   );
 }
