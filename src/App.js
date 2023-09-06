@@ -11,7 +11,7 @@ function App() {
       <BrowserRouter>
       <Routes>
         <Route index element={<Home/>}/>
-   
+        <Route path="/ao-fitness" element={<Home/>}/>
       </Routes>
       </BrowserRouter>
     </div>
