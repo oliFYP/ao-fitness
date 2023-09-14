@@ -7,7 +7,7 @@ import StartJourney from '../components/StartJourney';
 
 
 
-function Home() {
+function Home({}) {
   return (
     <div>
       <MainSection />

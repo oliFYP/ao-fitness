@@ -1,7 +1,13 @@
 import React from 'react';
 import logo from '../img/logo.png';
+import { useNavigate } from 'react-router-dom';
 
 const TopBar = () => {
+  const navigate = useNavigate();
+  const navigateToLogin = () => {
+    
+    navigate('/login');
+  };
   return (
     <div className="absolute top-0 w-full">
   <header className="bg-gradient-to-b from-black to-transparent p-4">
@@ -13,7 +19,7 @@ const TopBar = () => {
       
       <div className="flex items-center space-x-4">
         
-      <button className="font-bold h-9 text-white relative group btn btn-border-underline">
+      <button className="font-bold h-9 text-white relative group btn btn-border-underline" onClick={navigateToLogin}>
   Login
   <span className="absolute left-0 right-0 bottom-0 h-1 bg-white transform scale-x-0 transition-transform duration-300 group-hover:scale-x-100"></span>
 </button>

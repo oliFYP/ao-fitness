@@ -1,16 +1,23 @@
 import React, { useState, useEffect } from 'react';
 import coach from '../img/coach.jpg';
 import TopBar from './TopBar'; 
+import { useNavigate } from 'react-router-dom';
 
 const MainSection = () => {
   const [isLoaded, setIsLoaded] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
-    // Set a brief delay to simulate the animation
+
     setTimeout(() => {
       setIsLoaded(true);
     }, 500);
   }, []);
+
+  const navigateToLogin = () => {
+   
+    navigate('/login');
+  };
 
   return (
     <section className="relative h-screen">
@@ -25,7 +32,7 @@ const MainSection = () => {
           Welcome to our platform dedicated to helping you discover the
           perfect fitness coach on your journey towards a healthier lifestyle
         </p>
-        <button className="rounded-2xl bg-white mt-10 w-40 h-10 font-bold text-black flex items-center justify-center">
+        <button className="rounded-2xl bg-white mt-10 w-40 h-10 font-bold text-black flex items-center justify-center" onClick={navigateToLogin}>
           Get Started
         </button>
       </div>

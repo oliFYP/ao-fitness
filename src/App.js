@@ -1,20 +1,23 @@
+// App.js
 import React from 'react';
-import { BrowserRouter , Routes, Route } from 'react-router-dom';
-import Home from './pages/Home.js';
-
-
-
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Home from './pages/Home';
+import LoginPage from './pages/LoginPage';
+import Privacy from './pages/Privacy';
+import About from './pages/About';
+import Contact from './pages/Contact';
 
 function App() {
   return (
-    <div>
-      <BrowserRouter>
+    <Router basename="/ao-fitness">
       <Routes>
-        <Route index element={<Home/>}/>
-        <Route path="/ao-fitness" element={<Home/>}/>
+        <Route path="/" element={<Home />} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/privacy" element={<Privacy />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/contact" element={<Contact />} />
       </Routes>
-      </BrowserRouter>
-    </div>
+    </Router>
   );
 }
 
