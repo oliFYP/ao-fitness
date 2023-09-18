@@ -15,7 +15,7 @@ const TopBar = () => {
         <div className="flex items-center justify-between">
           <div className="flex items-center space-x-4">
             <img src={logo} alt="Logo" className="cursor-pointer h-8 mt-1 sm:h-12 sm:mt-2" onClick={navigateToHome}/>
-            <p className="cursor-pointer font-bold text-white text-xl hidden sm:block sm:text-3xl" onClick={navigateToHome}>
+            <p className="cursor-pointer font-bold text-white text-xl block sm:text-3xl" onClick={navigateToHome}>
               Fitness
             </p>
           </div>

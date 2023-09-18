@@ -1,12 +1,17 @@
-import React from 'react';
+
+import React, { useState } from 'react';
+import Footer from '../home-components/Footer';
+import ContactForm from '../contact-components/ContactForm';
+import TopBar from '../privacy-components/topbar';
 
 function Contact() {
   return (
-    <div className="bg-black flex flex-col items-center justify-center h-screen">
-      <h1 className="text-white text-4xl font-bold mb-4">Contact</h1>
-  
+    <div >
+     <TopBar/>
+     <ContactForm/>
+     <Footer/>
     </div>
   );
-}
+};
 
 export default Contact;

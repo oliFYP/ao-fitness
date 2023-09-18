@@ -1,9 +1,9 @@
 import React from 'react';
 
-import MainSection from '../components/MainSection';
-import AboutUs from '../components/AboutUs';
-import Footer from '../components/Footer';
-import StartJourney from '../components/StartJourney';
+import MainSection from '../home-components/MainSection';
+import AboutUs from '../home-components/AboutUs';
+import Footer from '../home-components/Footer';
+import StartJourney from '../home-components/StartJourney';
 
 
 

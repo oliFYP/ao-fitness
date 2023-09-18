@@ -1,8 +1,8 @@
 import React from 'react';
-import Footer from '../components/Footer';
+import Footer from '../home-components/Footer';
 
-import MainSectionP from '../privacycomponents/mainsectionprivacy';
-import TopBar from '../privacycomponents/topbar'
+import MainSectionP from '../privacy-components/mainsection';
+import TopBar from '../privacy-components/topbar'
 
 function Privacy() {
   return (
