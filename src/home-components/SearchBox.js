@@ -3,7 +3,7 @@ import React from 'react';
 const SearchBox = () => {
   return (
     <div className="flex justify-center items-center h-screen">
-          <div className="w-full  p-8 bg-gray-800 rounded-lg">
+          <div className="w-full  p-8 bg-gray-800 rounded-lg m-10 ">
             <h2 className="text-white text-2xl mb-4">Search for a Coach</h2>
             <div className="mb-4">
               <label className="block text-white mb-1" htmlFor="findCoach">

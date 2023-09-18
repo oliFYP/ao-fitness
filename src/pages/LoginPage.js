@@ -1,10 +1,14 @@
 import React from 'react';
+import TopBar from '../privacy-components/topbar';
+import Footer from '../home-components/Footer';
+import MainSection from '../login-components/mainsection';
 
 function LoginPage() {
   return (
-    <div className="bg-black flex flex-col items-center justify-center h-screen">
-      <h1 className="text-white text-4xl font-bold mb-4">Login Page</h1>
-  
+    <div>
+    <TopBar/>
+    <MainSection/>
+    <Footer/>
     </div>
   );
 }
