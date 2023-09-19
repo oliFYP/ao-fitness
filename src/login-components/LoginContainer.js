@@ -2,8 +2,8 @@ import React from 'react';
 
 function LoginContainer() {
   return (
-    <div className="flex justify-center items-center h-screen">
-    <div className="bg-black bg-opacity-50 backdrop-blur-lg p-8 rounded-lg max-w-md w-full">
+    <div className="flex justify-center sm: items-center h-screen">
+    <div className="bg-black bg-opacity-50 backdrop-blur-lg p-8 m-4 mt-10 mb-auto sm: m-0 rounded-lg max-w-md w-full">
       <h2 className="text-white text-2xl mb-4">Login</h2>
       <div className="mb-4">
         <label className="block text-white mb-1" htmlFor="email">
@@ -27,7 +27,7 @@ function LoginContainer() {
           placeholder="Enter your password"
         />
       </div>
-      <button className="bg-gray-600 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded w-full">
+      <button className="bg-black hover:bg-gray-700 text-white font-bold py-2 px-4 rounded w-full">
         Login
       </button>
       <div className="mt-4 text-center">
