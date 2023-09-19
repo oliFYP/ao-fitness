@@ -18,7 +18,7 @@ function Contact() {
     };
   return (
    <div className="min-h-screen flex flex-col items-center justify-center bg-black">
-      <div className="bg-gray-900 p-8 rounded shadow-lg">
+      <div className="bg-black bg-opacity-50 backdrop-blur-lg p-8 rounded shadow-lg">
         <h1 className="text-3xl mb-4 text-center text-white">Welcome to Customer Support</h1>
         <p className="text-center mb-4 text-white">If you need assistance, please fill out the form below.</p>
       <div className="max-w-md mx-auto text-white">
