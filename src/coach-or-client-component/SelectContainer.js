@@ -6,12 +6,10 @@ function SelectContainer() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    // Simulate a delay before showing the content
     const delayTimeout = setTimeout(() => {
       setIsLoaded(true);
     }, 500);
 
-    // Clear the timeout on component unmount to avoid memory leaks
     return () => clearTimeout(delayTimeout);
   }, []);
 
