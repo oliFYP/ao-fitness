@@ -16,7 +16,7 @@ const MainSection = () => {
 
   const navigateToLogin = () => {
    
-    navigate('/login');
+    navigate('/select');
   };
 
   return (

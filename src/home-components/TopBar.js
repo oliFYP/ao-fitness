@@ -8,6 +8,10 @@ const TopBar = () => {
     
     navigate('/login');
   };
+  const navigateToLoginCoach = () => {
+   
+    navigate('/login-Coach');
+  };
   return (
     <div className="absolute top-0 w-full">
   <header className="bg-gradient-to-b from-black to-transparent p-4">
@@ -24,7 +28,7 @@ const TopBar = () => {
   <span className="absolute left-0 right-0 bottom-0 h-1 bg-white transform scale-x-0 transition-transform duration-300 group-hover:scale-x-100"></span>
 </button>
 
-        <button className="rounded-2xl bg-white w-40 h-10 font-bold text-black flex items-center justify-center">
+        <button className="rounded-2xl bg-white w-40 h-10 font-bold text-black flex items-center justify-center" onClick={navigateToLoginCoach}>
           Join as coach
         </button>
       </div>

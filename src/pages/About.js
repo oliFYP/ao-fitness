@@ -1,10 +1,16 @@
 import React from 'react';
 
+import Footer from '../home-components/Footer';
+
+import MainSection from '../about-components/mainsection';
+import TopBar from '../privacy-components/topbar'
+
 function About() {
   return (
-    <div className="bg-black flex flex-col items-center justify-center h-screen">
-      <h1 className="text-4xl text-white font-bold mb-4">About</h1>
-  
+    <div>
+      <TopBar/>
+      <MainSection/>
+      <Footer/>
     </div>
   );
 }
