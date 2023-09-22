@@ -10,6 +10,7 @@ import Contact from './pages/Contact';
 import CoachOrClient from './pages/CoachOrClient';
 import ClientRegister from './pages/RegisterPage';
 import CoachRegister from './pages/RegisterPageCoach';
+import Dashboard from './pages/Dashboard';
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
         <Route path="/select" element={<CoachOrClient />} />
         <Route path="/Client-Register" element={<ClientRegister />} />
         <Route path="/Coach-Register" element={<CoachRegister />} />
+        <Route path="/Dashboard" element={<Dashboard />} />
       </Routes>
     </Router>
   );
