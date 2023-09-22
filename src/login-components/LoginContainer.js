@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 function LoginContainer() {
   const [isLoaded, setIsLoaded] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
   
@@ -12,6 +14,10 @@ function LoginContainer() {
   
     return () => clearTimeout(delayTimeout);
   }, []);
+
+  const navigateToRegister = () => {
+    navigate('//Client-Register');
+  };
 
   return (
     <div className={`flex justify-center sm:items-center h-screen ${isLoaded ? 'opacity-100 transition-all duration-1000 ease-out' : 'opacity-0'}`}>
@@ -43,7 +49,7 @@ function LoginContainer() {
           Login
         </button>
         <div className="mt-4 text-center">
-          <button className="text-white underline">Create an Account</button>
+          <button className="text-white underline" onClick={navigateToRegister}>Create an Account</button>
         </div>
       </div>
     </div>

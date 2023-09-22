@@ -8,6 +8,7 @@ import Privacy from './pages/Privacy';
 import About from './pages/About';
 import Contact from './pages/Contact';
 import CoachOrClient from './pages/CoachOrClient';
+import ClientRegister from './pages/RegisterPage';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/select" element={<CoachOrClient />} />
+        <Route path="/Client-Register" element={<ClientRegister />} />
       </Routes>
     </Router>
   );
