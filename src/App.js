@@ -9,6 +9,7 @@ import About from './pages/About';
 import Contact from './pages/Contact';
 import CoachOrClient from './pages/CoachOrClient';
 import ClientRegister from './pages/RegisterPage';
+import CoachRegister from './pages/RegisterPageCoach';
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
         <Route path="/contact" element={<Contact />} />
         <Route path="/select" element={<CoachOrClient />} />
         <Route path="/Client-Register" element={<ClientRegister />} />
+        <Route path="/Coach-Register" element={<CoachRegister />} />
       </Routes>
     </Router>
   );

@@ -16,7 +16,7 @@ function LoginContainer() {
   }, []);
 
   const navigateToRegister = () => {
-    navigate('//Client-Register');
+    navigate('/Client-Register');
   };
 
   return (
