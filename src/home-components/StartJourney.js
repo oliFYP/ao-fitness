@@ -3,8 +3,8 @@ import SearchBox from './SearchBox';
 
 const StartJourney = () => {
   return (
-    <section className="bg-black p-8">
-    <div className="flex flex-col lg:flex-row items-center justify-between">
+    <section className="bg-black p-8 pb-0">
+    <div className="flex flex-col lg:flex-row  justify-between">
       <div className="lg:w-2/3 text-white text-center lg:text-left lg:pr-4 mb-8 lg:mb-0">
         <h1 className="text-5xl font-bold mb-4">Your Fitness Journey Starts Here</h1>
         <p className="text-white mb-4">

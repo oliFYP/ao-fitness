@@ -2,12 +2,12 @@ import React from 'react';
 
 const SearchBox = () => {
   return (
-    <div className="flex justify-center items-center h-screen">
-          <div className="w-full  p-8 bg-gray-800 rounded-lg  ">
-            <h2 className="text-white text-2xl mb-4">Search for a Coach</h2>
-            <div className="mb-4">
+    <div className="flex ">
+    <div className="w-full p-8 pt-0  bg-black rounded-lg text-center">
+      <h2 className="text-white text-2xl mb-4">Search for a Coach </h2>
+      <div className="mb-4">
               <label className="block text-white mb-1" htmlFor="findCoach">
-                Find Coach:
+                Find Coach (If known):
               </label>
               <input
                 type="text"
@@ -29,7 +29,7 @@ const SearchBox = () => {
             </div>
             <div className="mb-4">
               <label className="block text-white mb-2">Select Sport:</label>
-              <div className="flex flex-wrap">
+              <div className="flex flex-wrap justify-center">
                 <label className="inline-flex items-center mr-4 mb-2">
                   <input type="radio" className="form-radio" name="sport" value="boxing" />
                   <span className="ml-2 text-white">Boxing</span>
@@ -48,9 +48,9 @@ const SearchBox = () => {
                 </label>
               </div>
             </div>
-            <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-              Search
-            </button>
+            <button className="bg-gray-700 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+          Search
+        </button>
           </div>
         </div>
     
