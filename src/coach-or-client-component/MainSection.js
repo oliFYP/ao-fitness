@@ -6,7 +6,7 @@ function MainSection() {
   return (
     <div>
       <section
-        className="relative h-screen"
+        className="relative min-h-screen flex justify-center items-center"
         style={{ backgroundImage: `url(${coach})`, backgroundSize: 'cover' }}
       >
         
