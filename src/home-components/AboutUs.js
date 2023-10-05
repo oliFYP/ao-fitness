@@ -1,9 +1,10 @@
 import React from 'react';
+import asmaoli from '../img/asmaoli.png'; 
 
 const AboutUs = () => {
   return (
     <section className="bg-black p-8 pt-0">
-      <div className=" mx-auto sm:mr-[45%]  text-white flex">
+      <div className="mx-auto text-white flex flex-wrap items-center">
         <div className="flex-1 pr-4">
           <h2 className="text-2xl font-bold mb-4">About Us</h2>
           <p>
@@ -15,6 +16,9 @@ const AboutUs = () => {
             are committed to providing you with the best possible recommendations and support. Let's lace up our gloves and
             embark on this exciting adventure together!
           </p>
+        </div>
+        <div className="flex lg:flex-1">
+          <img src={asmaoli} className="mt-7 w-50 lg:w-full h-auto" />
         </div>
       </div>
     </section>
