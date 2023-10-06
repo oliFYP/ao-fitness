@@ -25,7 +25,7 @@ function SelectContainer() {
 
   return (
     <div className="flex flex-wrap justify-center items-center">
-    <div className="bg-black bg-opacity-50 backdrop-blur-lg p-8 m-4 mt-5 lg:mt-auto mb-5 rounded-xl max-w-md w-full sm:w-1/2 flex flex-col justify-center items-center">
+    <div className={`bg-black bg-opacity-50 backdrop-blur-lg p-8 m-4 mt-5 lg:mt-auto mb-5 rounded-xl max-w-md w-full sm:w-1/2 flex flex-col justify-center items-center${isLoaded ? 'opacity-100 transition-all duration-1000 ease-out' : 'opacity-0'}`}>
       <h2 className="text-xl text-white font-bold">Client</h2>
       <img src={clientside} className="mt-7 w-full h-auto rounded-xl" alt="Client" />
       <button className="bg-white text-black font-bold py-2 px-4 mt-5 rounded-lg" onClick={navigateToLogin}>

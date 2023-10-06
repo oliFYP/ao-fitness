@@ -4,7 +4,7 @@ const SearchBox = () => {
   return (
     <div className="flex ">
     <div className="w-full p-8 pt-0  bg-black rounded-lg text-center">
-      <h2 className="text-white text-2xl mb-4">Search for a Coach </h2>
+      <h2 className="text-white text-2xl mb-4 font-bold">Search for a Coach </h2>
       <div className="mb-4">
               <label className="block text-white mb-1" htmlFor="findCoach">
                 Find Coach (If known):
@@ -48,7 +48,7 @@ const SearchBox = () => {
                 </label>
               </div>
             </div>
-            <button className="bg-gray-700 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+            <button className="bg-white hover:bg-blue-700 text-black font-bold py-2 px-4 rounded-lg">
           Search
         </button>
           </div>

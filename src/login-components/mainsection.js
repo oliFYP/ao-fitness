@@ -6,18 +6,20 @@ import Login from './LoginContainer';
 
   
   
-function MainSection() {
+function mainsection() {
+  const sectionStyle = {
+    backgroundImage: `url(${coach})`,
+    backgroundSize: 'cover',
+  };
+
   return (
     <div>
-    <section
-      className="relative h-screen"
-      style={{ backgroundImage: `url(${coach})`, backgroundSize: 'cover' }}
-    >
-      
-      <Login/>
-    </section>
-  </div>
+      <section className="relative h-screen" style={sectionStyle}>
+        <div className="absolute inset-0 bg-black opacity-50"></div>
+        <Login />
+      </section>
+    </div>
   );
-};
+}
 
-export default MainSection;
+export default mainsection;
