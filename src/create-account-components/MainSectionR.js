@@ -9,7 +9,11 @@ function MainSection() {
     <div>
       <section
         className="relative h-screen"
-        style={{ backgroundImage: `url(${coach})`, backgroundSize: 'cover' }}
+        style={{
+          backgroundImage: `url(${coach})`,
+          backgroundSize: 'cover',
+          overflow: 'hidden',
+        }}
       >
         
         <Container/>

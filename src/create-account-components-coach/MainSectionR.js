@@ -8,8 +8,8 @@ function MainSection() {
   return (
     <div>
       <section
-        className="relative h-screen"
-        style={{ backgroundImage: `url(${coach})`, backgroundSize: 'cover' }}
+        className="relative min-h-screen p-10"
+        style={{ backgroundImage: `url(${coach})`, backgroundSize: 'cover', overflow: 'hidden', }}
       >
         
         <Container/>
