@@ -27,8 +27,8 @@ const MainSection = () => {
       />
       <TopBar/>
       <div className={`absolute top-1/4 ml-5 mr-5 sm:left-1/4 transform ${isLoaded ? 'translate-y-0 opacity-100 transition-all duration-1000 ease-out' : '-translate-y-16 opacity-0'}`}>
-        <h1 className="text-white font-bold text-4xl md:text-4xl lg:text-6xl max-w-md"> Welcome! </h1>
-        <p className="text-white font-bold mt-3 text-lg  lg:text-3xl lg:mt-10 max-w-md">
+        <h1 className="select-none text-white font-bold text-4xl md:text-4xl lg:text-6xl max-w-md"> Welcome! </h1>
+        <p className="select-none text-white font-bold mt-3 text-lg  lg:text-3xl lg:mt-10 max-w-md">
           Welcome to our platform dedicated to helping you discover the
           perfect fitness coach on your journey towards a healthier lifestyle
         </p>
