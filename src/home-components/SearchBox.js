@@ -2,8 +2,8 @@ import React from 'react';
 
 const SearchBox = () => {
   return (
-    <div className="flex ">
-    <div className="w-full p-8 pt-0  bg-black rounded-lg text-center">
+    <div className="flex">
+    <div className="w-full p-0 pb-6 md:p-8 pt-0 bg-black rounded-lg text-center">
       <h2 className="text-white text-2xl mb-4 font-bold">Search for a Coach </h2>
       <div className="mb-4">
               <label className="block text-white mb-1" htmlFor="findCoach">

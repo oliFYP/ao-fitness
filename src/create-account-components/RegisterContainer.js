@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
+
 function RegisterContainer() {
   const [isLoaded, setIsLoaded] = useState(false);
   const [isEmailValid, setIsEmailValid] = useState(true);
@@ -43,23 +44,24 @@ function RegisterContainer() {
   const maxDOBFormatted = maxDOB.toISOString().split('T')[0];
  
   return (
-    <div className={`absolute inset-0 flex items-center justify-center bg-black bg-opacity-50 ${isLoaded ? 'opacity-100 transition-all duration-1000 ease-out' : 'opacity-0'}`}>
-      <div className="max-w-md w-full mt-10 mb-10 lg:m-2 p-6 bg-black bg-opacity-50 backdrop-blur-lg rounded-lg grid grid-cols-2 gap-4">
+    <section className={`relative min-h-screen w-full flex items-center justify-center bg-black bg-opacity-50 ${isLoaded ? 'opacity-100 transition-all duration-1000 ease-out' : 'opacity-0'}`}>
+      <div className="max-w-sm w-full h-auto mt-10 mb-10 m-1 p-6 bg-black bg-opacity-50 backdrop-blur-lg rounded-lg grid grid-cols-2 gap-4">
+    
         <div className="col-span-2 mb-4">
         <h2 className="text-2xl font-bold text-white">Client Register</h2>
       </div>
       <div>
-        <label htmlFor="name" className="block mb-2 text-white">
+        <label htmlFor="name" className="block mb-2 text-white font-bold">
           Name
         </label>
         <input type="text" id="name" className="w-full rounded border p-2 mb-4 bg-gray-800 text-white" />
 
-        <label htmlFor="surname" className="block mb-2 text-white">
+        <label htmlFor="surname" className="block mb-2 text-white font-bold">
           Surname
         </label>
         <input type="text" id="surname" className="w-full rounded border p-2 mb-4 bg-gray-800 text-white" />
 
-        <label htmlFor="email" className={`block mb-2 ${isEmailValid ? 'text-white' : 'text-red-500'}`}>
+        <label htmlFor="email" className={`block mb-2 font-bold ${isEmailValid ? 'text-white' : 'text-red-500'}`}>
           Email
         </label>
         <input type="email"
@@ -67,16 +69,16 @@ function RegisterContainer() {
             className={`w-full rounded border p-2 mb-4 bg-gray-800 ${isEmailValid ? 'text-white' : 'text-red-500'}`}
             onChange={handleEmailChange}/>
 
-        <label htmlFor="password" className={`block mb-2 ${isPasswordValid ? 'text-white' : 'text-red-500'}`}>
+        <label htmlFor="password" className={`block mb-2 font-bold ${isPasswordValid ? 'text-white' : 'text-red-500'}`}>
             Password
           </label>
         <input
             type="password"
             id="password"
-            className={`w-full rounded border p-2 mb-4 bg-gray-800 ${isPasswordValid ? 'text-white' : 'text-red-500'}`}
+            className={`w-full rounded border p-2 mb-4 bg-gray-800 font-bold ${isPasswordValid ? 'text-white' : 'text-red-500'}`}
             onChange={handlePasswordChange}
           />
-          <label htmlFor="confirmPassword" className={`block mb-2 ${passwordsMatch ? 'text-white' : 'text-red-500'}`}>
+          <label htmlFor="confirmPassword" className={`block mb-2 font-bold ${passwordsMatch ? 'text-white' : 'text-red-500'}`}>
             Confirm Password
           </label>
           <input
@@ -87,12 +89,12 @@ function RegisterContainer() {
           />
       </div>
       <div>
-        <label htmlFor="dob" className="block mb-2 text-white">
+        <label htmlFor="dob" className="block mb-2 text-white font-bold">
           Date of Birth
         </label>
         <input type="date" id="dob" className="w-full rounded border p-2 mb-4 bg-gray-800 text-white" max={maxDOBFormatted} />
 
-        <label htmlFor="phone" className={`block mb-2 ${hasNonNumericCharacters ? 'text-red-500' : 'text-white'}`}> 
+        <label htmlFor="phone" className={`block mb-2 font-bold ${hasNonNumericCharacters ? 'text-red-500' : 'text-white'}`}> 
       Phone
     </label>
     <input
@@ -102,12 +104,12 @@ function RegisterContainer() {
       onChange={handlePhoneChange}
     />
 
-        <label htmlFor="country" className="block mb-2 text-white">
+        <label htmlFor="country" className="block mb-2 text-white font-bold">
           Country
         </label>
         <input type="text" id="country" className="w-full rounded border p-2 mb-4 bg-gray-800 text-white" />
 
-        <label htmlFor="city" className="block mb-2 text-white">
+        <label htmlFor="city" className="block mb-2 text-white font-bold">
           City
         </label>
         <input type="text" id="city" className="w-full rounded border p-2 mb-4 bg-gray-800 text-white" />
@@ -116,7 +118,7 @@ function RegisterContainer() {
         Register
       </button>
     </div>
-  </div>
+  </section>
   );
 }
 

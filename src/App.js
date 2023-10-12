@@ -14,6 +14,7 @@ import Dashboard from './pages/Dashboard';
 
 function App() {
   return (
+
     <Router basename="/ao-fitness">
       <Routes>
         <Route path="/" element={<Home />} />
@@ -28,6 +29,7 @@ function App() {
         <Route path="/Dashboard" element={<Dashboard />} />
       </Routes>
     </Router>
+
   );
 }
 

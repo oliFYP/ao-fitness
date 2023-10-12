@@ -4,13 +4,12 @@ import Container from './SelectContainer'
 
 function MainSection() {
   return (
-    <div>
-      <section
+    <div
         className="relative min-h-screen flex justify-center items-center"
         style={{ backgroundImage: `url(${coach})`, backgroundSize: 'cover' }}
       >
         <Container/>
-      </section>
+      
     </div>
   );
 }
