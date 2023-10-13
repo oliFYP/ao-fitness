@@ -1,9 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import {getAuth, signInWithEmailAndPassword} from 'firebase/auth'
 
 function LoginContainer() {
   const [isLoaded, setIsLoaded] = useState(false);
   const navigate = useNavigate();
+  const [email,setEmail] = useState('');
+  const [password,setPassword] = useState('');
+  const auth = getAuth();
+    
 
   useEffect(() => {
   
@@ -19,6 +24,19 @@ function LoginContainer() {
     navigate('/Client-Register');
   };
 
+  async function handleSignIn(e){
+    e.preventDefault();
+signInWithEmailAndPassword(auth,email,password)
+.then((user) => {
+    console.log(user)
+    navigate('/Dashboard')
+    
+})
+.catch((error) => {
+    console.log(error)
+})
+}
+
   return (
     <div className={`flex justify-center min-h-screen sm:items-center w-full h-auto bg-black bg-opacity-50 ${isLoaded ? 'opacity-100 transition-all duration-1000 ease-out' : 'opacity-0'}`}>
     <div className="bg-black bg-opacity-50 backdrop-blur-lg p-8 m-4 mt-10 mb-10 mb-auto sm:m-0 rounded-lg max-w-md w-full">
@@ -28,6 +46,7 @@ function LoginContainer() {
             Email:
           </label>
           <input
+          onChange={(e) => {setEmail(e.target.value)}}
             type="email"
             id="email"
             className="w-full px-3 py-2 bg-gray-800 bg-opacity-50 rounded text-white"
@@ -39,13 +58,14 @@ function LoginContainer() {
             Password:
           </label>
           <input
+          onChange={(e) => {setPassword(e.target.value)}}
             type="password"
             id="password"
             className="w-full px-3 py-2 bg-gray-800 bg-opacity-50 rounded text-white"
             placeholder="Enter your password"
           />
         </div>
-        <button className="bg-black hover:bg-gray-700 text-white font-bold py-2 px-4 rounded w-full">
+        <button onClick={(e) => {handleSignIn(e)}} className="bg-black hover:bg-gray-700 text-white font-bold py-2 px-4 rounded w-full">
           Login
         </button>
         <div className="mt-4 text-center">

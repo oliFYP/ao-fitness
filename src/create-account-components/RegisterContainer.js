@@ -1,14 +1,19 @@
 import React, { useState, useEffect } from 'react';
-
+import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
+import { addDoc, collection } from 'firebase/firestore';
+import db from '../firebaseConfig';
 
 function RegisterContainer() {
   const [isLoaded, setIsLoaded] = useState(false);
   const [isEmailValid, setIsEmailValid] = useState(true);
   const [isPasswordValid, setIsPasswordValid] = useState(true);
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [passwordsMatch, setPasswordsMatch] = useState(true);
   const [hasNonNumericCharacters, setHasNonNumericCharacters] = useState(false);
+
+  const auth = getAuth();
 
   useEffect(() => {
     const delayTimeout = setTimeout(() => {
@@ -20,6 +25,7 @@ function RegisterContainer() {
 
   const handleEmailChange = (event) => {
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    setEmail(event.target.value);
     setIsEmailValid(emailPattern.test(event.target.value));
   };
 
@@ -42,6 +48,57 @@ function RegisterContainer() {
   const maxDOB = new Date();
   maxDOB.setFullYear(maxDOB.getFullYear() - 18);
   const maxDOBFormatted = maxDOB.toISOString().split('T')[0];
+
+  
+  async function handleSignUp() {
+    const inputs = [
+      { id: 'name', label: 'Name' },
+      { id: 'surname', label: 'Surname' },
+      { id: 'email', label: 'Email' },
+      { id: 'password', label: 'Password' },
+      { id: 'confirmPassword', label: 'Confirm Password' },
+      { id: 'dob', label: 'Date of Birth' },
+      { id: 'phone', label: 'Phone' },
+      { id: 'country', label: 'Country' },
+      { id: 'city', label: 'City' },
+    ];
+  
+    for (const input of inputs) {
+      const value = document.getElementById(input.id).value.trim();
+      if (value === '') {
+        alert(`Please provide a valid ${input.label}`);
+        return;
+      }
+    }
+  
+    createUserWithEmailAndPassword(auth, email, password)
+    .then((user) => {
+      console.log(user)
+    })
+    .catch((error) => {
+      console.log(error)
+    })
+    try {
+      const userCredentials = await createUserWithEmailAndPassword(auth, email, password);
+      const user = userCredentials.user;
+  
+      // Add user data to the Firestore collection
+      await addDoc(collection(db, 'users'), {
+        email,
+        name: document.getElementById('name').value,
+        surname: document.getElementById('surname').value,
+        dob: document.getElementById('dob').value,
+        phone: document.getElementById('phone').value,
+        city: document.getElementById('city').value,
+        country: document.getElementById('country').value,
+      });
+  
+      console.log('User registered successfully:', user);
+    } catch (error) {
+      console.error('Error registering user:', error);
+    }
+  }
+  
  
   return (
     <section className={`relative min-h-screen w-full flex items-center justify-center bg-black bg-opacity-50 ${isLoaded ? 'opacity-100 transition-all duration-1000 ease-out' : 'opacity-0'}`}>
@@ -114,7 +171,7 @@ function RegisterContainer() {
         </label>
         <input type="text" id="city" className="w-full rounded border p-2 mb-4 bg-gray-800 text-white" />
       </div>
-      <button type="submit" className="select-none col-span-2 bg-black text-white py-2 px-4 rounded">
+      <button onClick={() => {handleSignUp()}} type="submit" className="select-none col-span-2 bg-black text-white py-2 px-4 rounded">
         Register
       </button>
     </div>
