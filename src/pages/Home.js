@@ -11,7 +11,6 @@ function Home({}) {
   return (
     <div>
       <MainSection />
-      <StartJourney/>
       <AboutUs/>
       <Footer/>
     </div>

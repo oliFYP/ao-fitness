@@ -7,7 +7,7 @@ import LoginCoach from './pages/LoginPageCoach';
 import Privacy from './pages/Privacy';
 import About from './pages/About';
 import Contact from './pages/Contact';
-import CoachOrClient from './pages/CoachOrClient';
+
 import ClientRegister from './pages/RegisterPage';
 import CoachRegister from './pages/RegisterPageCoach';
 import Dashboard from './pages/Dashboard';
@@ -23,7 +23,7 @@ function App() {
         <Route path="/privacy" element={<Privacy />} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
-        <Route path="/select" element={<CoachOrClient />} />
+   
         <Route path="/Client-Register" element={<ClientRegister />} />
         <Route path="/Coach-Register" element={<CoachRegister />} />
         <Route path="/Dashboard" element={<Dashboard />} />

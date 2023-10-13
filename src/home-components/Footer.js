@@ -20,8 +20,16 @@ const Footer = () => {
   };
 
   const navigateToHome = () => {
-    navigate('/');
-    window.scrollTo(0, 0);
+    
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  
+   
+    setTimeout(() => {
+      navigate('/');
+    }, 500); 
   };
 
   return (

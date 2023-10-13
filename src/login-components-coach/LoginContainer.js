@@ -20,8 +20,9 @@ function LoginContainer() {
   };
 
   return (
-    <div className={`flex justify-center sm:items-center h-screen ${isLoaded ? 'opacity-100 transition-all duration-1000 ease-out' : 'opacity-0'}`}>
-    <div className="bg-white bg-opacity-50 backdrop-blur-lg p-8 m-4 mt-10 mb-auto sm:m-0 rounded-lg max-w-md w-full">
+    
+    <div className={`flex justify-center min-h-screen sm:items-center w-full h-auto bg-black bg-opacity-50 ${isLoaded ? 'opacity-100 transition-all duration-1000 ease-out' : 'opacity-0'}`}>
+    <div className="bg-white bg-opacity-50 backdrop-blur-lg p-8 m-4 mt-10 mb-10 mb-auto sm:m-0 rounded-lg max-w-md w-full">
       <h2 className="select-none text-black text-2xl mb-4 font-bold">Coach Login</h2>
       <div className="mb-4">
         <label className="select-none block text-black mb-1" htmlFor="email">
@@ -51,6 +52,9 @@ function LoginContainer() {
       <div className="mt-4 text-center">
         <button className="text-black underline"onClick={navigateToRegister}>Create an Account</button>
       </div>
+      <div className="mt-1 text-center">
+          <button className="text-black underline" >Forgot Password?</button>
+        </div>
     </div>
   </div>
   

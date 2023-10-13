@@ -7,15 +7,17 @@ import Login from './LoginContainer';
   
   
 function mainsection() {
-  const sectionStyle = {
-    backgroundImage: `url(${coach})`,
-    backgroundSize: 'cover',
-  };
-
+ 
   return (
     <div>
-      <section className="relative h-screen" style={sectionStyle}>
-        <div className="absolute inset-0 bg-black opacity-50"></div>
+      <section
+         className="relative min-h-screen flex items-center justify-center"
+         style={{
+           backgroundImage: `url(${coach})`,
+           backgroundSize: 'cover',
+           overflow: 'hidden',
+         }}
+      >
         <Login />
       </section>
     </div>
