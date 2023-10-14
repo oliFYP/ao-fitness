@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
 import { addDoc, collection } from 'firebase/firestore';
 import db from '../firebaseConfig';
+import { useNavigate } from 'react-router-dom';
 
 function RegisterContainer() {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -12,6 +13,7 @@ function RegisterContainer() {
   const [confirmPassword, setConfirmPassword] = useState('');
   const [passwordsMatch, setPasswordsMatch] = useState(true);
   const [hasNonNumericCharacters, setHasNonNumericCharacters] = useState(false);
+  const navigate = useNavigate();
 
   const auth = getAuth();
 
@@ -63,37 +65,29 @@ function RegisterContainer() {
       { id: 'city', label: 'City' },
     ];
   
+    const formData = {};
     for (const input of inputs) {
       const value = document.getElementById(input.id).value.trim();
       if (value === '') {
         alert(`Please provide a valid ${input.label}`);
         return;
       }
+      formData[input.id] = value;  // Store input values in formData
     }
   
-    createUserWithEmailAndPassword(auth, email, password)
-    .then((user) => {
-      console.log(user)
-    })
-    .catch((error) => {
-      console.log(error)
-    })
+    const { email, password } = formData; // Extract email and password
+  
     try {
       const userCredentials = await createUserWithEmailAndPassword(auth, email, password);
       const user = userCredentials.user;
   
       // Add user data to the Firestore collection
       await addDoc(collection(db, 'users'), {
-        email,
-        name: document.getElementById('name').value,
-        surname: document.getElementById('surname').value,
-        dob: document.getElementById('dob').value,
-        phone: document.getElementById('phone').value,
-        city: document.getElementById('city').value,
-        country: document.getElementById('country').value,
+        ...formData,  // Include all form data
       });
   
       console.log('User registered successfully:', user);
+      navigate('/Dashboard');
     } catch (error) {
       console.error('Error registering user:', error);
     }

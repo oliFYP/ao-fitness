@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
 import { addDoc, collection } from 'firebase/firestore';
 import db from '../firebaseConfig';
+import { useNavigate } from 'react-router-dom';
 
 function RegisterContainer() {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -12,6 +13,7 @@ function RegisterContainer() {
   const [confirmPassword, setConfirmPassword] = useState('');
   const [passwordsMatch, setPasswordsMatch] = useState(true);
   const [hasNonNumericCharacters, setHasNonNumericCharacters] = useState(false);
+  const navigate = useNavigate();
 
   const auth = getAuth();
 
@@ -94,6 +96,8 @@ function RegisterContainer() {
       });
   
       console.log('Coaches registered successfully:', user);
+      navigate('/Dashboard');
+
     } catch (error) {
       console.error('Error registering user:', error);
     }
