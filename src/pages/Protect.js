@@ -6,7 +6,7 @@ export function Protected({children}){
     const {user} = useContext(Context);
 
     if(!user){
-        return <Navigate to="/login" replace/>
+        return <Navigate to="/" replace/>
     }else{
         return children;
     }

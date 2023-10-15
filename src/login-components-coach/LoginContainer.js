@@ -1,9 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import {getAuth, signInWithEmailAndPassword} from 'firebase/auth';
 
 function LoginContainer() {
   const [isLoaded, setIsLoaded] = useState(false);
   const navigate = useNavigate();
+  const [email,setEmail] = useState('');
+  const [password,setPassword] = useState('');
+  const auth = getAuth();
 
   useEffect(() => {
   
@@ -18,7 +22,29 @@ function LoginContainer() {
   const navigateToRegister = () => {
     navigate('/Coach-Register');
   };
+  async function handleSignIn(e) {
+    e.preventDefault();
+  
+    try {
+      const userCredential = await signInWithEmailAndPassword(auth, email, password);
+      const user = userCredential.user;
+      console.log('User signed in:', user);
+      navigate('/Dashboard');
+    } catch (error) {
 
+      if (error.code === 'auth/user-not-found') {
+
+        window.alert('User not found. Please check your email.');
+      } else if (error.code === 'auth/wrong-password') {
+ 
+        window.alert('Incorrect password. Please try again.');
+      } else {
+       
+        window.alert('An error occurred. Please try again later.');
+        console.error('Error signing in:', error);
+      }
+    }
+  }
   return (
     
     <div className={`flex justify-center min-h-screen sm:items-center w-full h-auto bg-black bg-opacity-50 ${isLoaded ? 'opacity-100 transition-all duration-1000 ease-out' : 'opacity-0'}`}>
@@ -29,6 +55,7 @@ function LoginContainer() {
           Email:
         </label>
         <input
+         onChange={(e) => {setEmail(e.target.value)}}
           type="email"
           id="email"
           className="w-full px-3 py-2 bg-gray-800 bg-opacity-50 rounded text-white"
@@ -40,17 +67,18 @@ function LoginContainer() {
           Password:
         </label>
         <input
+         onChange={(e) => {setPassword(e.target.value)}}
           type="password"
           id="password"
           className="w-full px-3 py-2 bg-gray-800 bg-opacity-50 rounded text-white"
           placeholder="Enter your password"
         />
       </div>
-      <button className="bg-black hover:bg-gray-700 text-white font-bold py-2 px-4 rounded w-full">
+      <button className="bg-black hover:bg-gray-700 text-white font-bold py-2 px-4 rounded w-full" onClick={(e) => {handleSignIn(e)}}>
         Login
       </button>
       <div className="mt-4 text-center">
-        <button className="text-black underline"onClick={navigateToRegister}>Create an Account</button>
+        <button className="text-black underline" onClick={navigateToRegister}>Create an Account</button>
       </div>
       <div className="mt-1 text-center">
           <button className="text-black underline" >Forgot Password?</button>

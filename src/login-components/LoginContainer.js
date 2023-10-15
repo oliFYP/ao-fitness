@@ -24,18 +24,29 @@ function LoginContainer() {
     navigate('/Client-Register');
   };
 
-  async function handleSignIn(e){
+  async function handleSignIn(e) {
     e.preventDefault();
-signInWithEmailAndPassword(auth,email,password)
-.then((user) => {
-    console.log(user)
-    navigate('/Dashboard')
-    
-})
-.catch((error) => {
-    console.log(error)
-})
-}
+  
+    try {
+      const userCredential = await signInWithEmailAndPassword(auth, email, password);
+      const user = userCredential.user;
+      console.log('User signed in:', user);
+      navigate('/Dashboard');
+    } catch (error) {
+
+      if (error.code === 'auth/user-not-found') {
+
+        window.alert('User not found. Please check your email.');
+      } else if (error.code === 'auth/wrong-password') {
+
+        window.alert('Incorrect password. Please try again.');
+      } else {
+
+        window.alert('An error occurred. Please try again later.');
+        console.error('Error signing in:', error);
+      }
+    }
+  }
 
   return (
     <div className={`flex justify-center min-h-screen sm:items-center w-full h-auto bg-black bg-opacity-50 ${isLoaded ? 'opacity-100 transition-all duration-1000 ease-out' : 'opacity-0'}`}>
