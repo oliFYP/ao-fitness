@@ -4,12 +4,19 @@ import { addDoc, collection } from 'firebase/firestore';
 import db from '../firebaseConfig';
 import { useNavigate } from 'react-router-dom';
 
+
+
+
+
+
+
 function RegisterContainer() {
   const [isLoaded, setIsLoaded] = useState(false);
   const [isEmailValid, setIsEmailValid] = useState(true);
   const [isPasswordValid, setIsPasswordValid] = useState(true);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [gender, setGender] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [passwordsMatch, setPasswordsMatch] = useState(true);
   const [hasNonNumericCharacters, setHasNonNumericCharacters] = useState(false);
@@ -45,6 +52,9 @@ function RegisterContainer() {
   const handlePhoneChange = (event) => {
     setHasNonNumericCharacters(event.target.value.match(/[^0-9]/) !== null); 
   };
+  const handleGenderChange = (event) => {
+    setGender(event.target.value);
+  };
 
 
   const maxDOB = new Date();
@@ -56,9 +66,8 @@ function RegisterContainer() {
     const inputs = [
       { id: 'name', label: 'Name' },
       { id: 'surname', label: 'Surname' },
+      { id: 'gender', label: 'Gender' },
       { id: 'email', label: 'Email' },
-      { id: 'password', label: 'Password' },
-      { id: 'confirmPassword', label: 'Confirm Password' },
       { id: 'dob', label: 'Date of Birth' },
       { id: 'phone', label: 'Phone' },
       { id: 'country', label: 'Country' },
@@ -72,26 +81,33 @@ function RegisterContainer() {
         alert(`Please provide a valid ${input.label}`);
         return;
       }
-      formData[input.id] = value;  // Store input values in formData
+      formData[input.id] = value;
     }
   
-    const { email, password } = formData; // Extract email and password
-  
+    const { email } = formData;
+
     try {
       const userCredentials = await createUserWithEmailAndPassword(auth, email, password);
       const user = userCredentials.user;
   
-      // Add user data to the Firestore collection
-      await addDoc(collection(db, 'users'), {
-        ...formData,  // Include all form data
+      delete formData.password;
+      delete formData.confirmPassword;
+  
+      await addDoc(collection(db, 'Users'), {
+        ...formData,
       });
   
       console.log('User registered successfully:', user);
       navigate('/Dashboard');
     } catch (error) {
-      console.error('Error registering user:', error);
+      if (error.code === 'auth/email-already-in-use') {
+        alert('Email is already in use. Please use a different email.');
+      } else {
+        console.error('Error registering user:', error);
+      }
     }
   }
+
   
  
   return (
@@ -140,6 +156,21 @@ function RegisterContainer() {
           />
       </div>
       <div>
+      <label htmlFor="gender" className="select-none block mb-2 text-white font-bold">
+          Gender
+        </label>
+        <select
+          id="gender"
+          className="w-full rounded border p-2 mb-4 bg-gray-800 bg-opacity-50 text-white"
+          onChange={handleGenderChange}
+          value={gender}
+        >
+          <option value="">Select gender</option>
+          <option value="male">Male</option>
+          <option value="female">Female</option>
+          <option value="other">Other</option>
+        </select>
+
         <label htmlFor="dob" className="select-none block mb-2 text-white font-bold">
           Date of Birth
         </label>
