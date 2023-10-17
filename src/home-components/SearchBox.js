@@ -19,9 +19,9 @@ const SearchBox = () => {
             return `${data.name} ${data.surname}`;
           });
 
-          // Filter coaches based on the input searchQuery
+          // Filter coaches based on the input searchQuery (case-insensitive)
           const filteredCoaches = coaches.filter(coach =>
-            coach.toLowerCase().includes(searchQuery.toLowerCase())
+            coach.toUpperCase().includes(searchQuery.toUpperCase())
           );
 
           setCoachNames(filteredCoaches);

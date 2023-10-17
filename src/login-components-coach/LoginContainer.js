@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import {getAuth, signInWithEmailAndPassword} from 'firebase/auth';
+import { getFirestore, collection, getDocs, query, where } from 'firebase/firestore';
 
 function LoginContainer() {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -26,20 +27,26 @@ function LoginContainer() {
     e.preventDefault();
   
     try {
-      const userCredential = await signInWithEmailAndPassword(auth, email, password);
-      const user = userCredential.user;
-      console.log('User signed in:', user);
-      navigate('/Dashboard');
+      // Check if the user's email exists in Firestore
+      const firestore = getFirestore();
+      const usersRef = collection(firestore, 'Coaches');
+      const querySnapshot = await getDocs(query(usersRef, where('email', '==', email)));
+  
+      if (!querySnapshot.empty) {
+        // Email exists, proceed to sign in
+        const userCredential = await signInWithEmailAndPassword(auth, email, password);
+        const user = userCredential.user;
+        console.log('User signed in:', user);
+        navigate('/Dashboard');
+      } else {
+        window.alert('User not found. Please check your email.');
+      }
     } catch (error) {
-
       if (error.code === 'auth/user-not-found') {
-
         window.alert('User not found. Please check your email.');
       } else if (error.code === 'auth/wrong-password') {
- 
         window.alert('Incorrect password. Please try again.');
       } else {
-       
         window.alert('An error occurred. Please try again later.');
         console.error('Error signing in:', error);
       }
