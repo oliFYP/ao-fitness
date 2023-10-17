@@ -27,13 +27,11 @@ function LoginContainer() {
     e.preventDefault();
   
     try {
-      // Check if the user's email exists in Firestore
       const firestore = getFirestore();
       const usersRef = collection(firestore, 'Coaches');
       const querySnapshot = await getDocs(query(usersRef, where('email', '==', email)));
   
       if (!querySnapshot.empty) {
-        // Email exists, proceed to sign in
         const userCredential = await signInWithEmailAndPassword(auth, email, password);
         const user = userCredential.user;
         console.log('User signed in:', user);
@@ -47,7 +45,7 @@ function LoginContainer() {
       } else if (error.code === 'auth/wrong-password') {
         window.alert('Incorrect password. Please try again.');
       } else {
-        window.alert('An error occurred. Please try again later.');
+        window.alert('Incorrect password. Please try again.');
         console.error('Error signing in:', error);
       }
     }

@@ -105,7 +105,7 @@ function RegisterContainer() {
   return (
 
     <section className={`relative min-h-screen w-full flex items-center justify-center bg-black bg-opacity-50 ${isLoaded ? 'opacity-100 transition-all duration-1000 ease-out' : 'opacity-0'}`}>
-      <div className="max-w-sm w-full h-auto mt-10 mb-10 m-1 p-6 bg-white bg-opacity-50 backdrop-blur-lg rounded-lg grid grid-cols-2 gap-4">
+      <div className="max-w-2xl w-full h-auto mt-10 mb-10 m-1 p-6 bg-white bg-opacity-50 backdrop-blur-lg rounded-lg grid grid-cols-2 gap-4">
       <div className="col-span-2 mb-4">
         <h2 className="select-none text-2xl font-bold text-black">Coach Register</h2>
       </div>
