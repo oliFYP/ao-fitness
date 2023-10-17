@@ -87,7 +87,7 @@ function RegisterContainer() {
       delete formData.password;
       delete formData.confirmPassword;
   
-      await addDoc(collection(db, 'Users'), {
+      await addDoc(collection(db, 'Coaches'), {
         ...formData,
       });
   

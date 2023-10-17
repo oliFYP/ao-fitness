@@ -12,6 +12,7 @@ import CoachRegister from './pages/RegisterPageCoach';
 import Dashboard from './pages/Dashboard';
 import Protect, { Protected } from './pages/Protect';
 import { AuthContext } from './Context/AuthContext';
+import ForgottenPassword from './pages/ForgottenPassword';
 
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/login-Coach" element={<LoginCoach />} />
+          <Route path="/forgotten-password" element={<ForgottenPassword />} />
           <Route path="/privacy" element={<Privacy />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />

@@ -23,6 +23,9 @@ function LoginContainer() {
   const navigateToRegister = () => {
     navigate('/Client-Register');
   };
+  const navigateToForgotten = () => {
+    navigate('/forgotten-password');
+  };
 
   async function handleSignIn(e) {
     e.preventDefault();
@@ -83,7 +86,7 @@ function LoginContainer() {
           <button className="text-white underline" onClick={navigateToRegister}>Create an Account</button>
         </div>
         <div className="mt-1 text-center">
-          <button className="text-white underline" >Forgot Password?</button>
+          <button className="text-white underline" onClick={navigateToForgotten}>Forgot Password?</button>
         </div>
       </div>
     </div>
