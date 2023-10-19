@@ -1,6 +1,6 @@
 
 import React, { useState } from 'react';
-import Footer from '../home-components/Footer';
+import Footer from '../user-dashboard-components/FooterLoggedIn';
 import TopBarO from '../user-dashboard-components/MainsectionD';
 
 function Dashboard() {

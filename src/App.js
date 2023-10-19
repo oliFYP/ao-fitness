@@ -13,6 +13,9 @@ import Dashboard from './pages/Dashboard';
 import Protect, { Protected } from './pages/Protect';
 import { AuthContext } from './Context/AuthContext';
 import ForgottenPassword from './pages/ForgottenPassword';
+import AboutLoggedIn from './pages/AboutLoggedIn';
+import ContactLoggedIn from './pages/ContactLoggedIn';
+import PrivacyLoggedIn from './pages/PrivacyLoggedIn';
 
 
 function App() {
@@ -30,6 +33,9 @@ function App() {
           <Route path="/Client-Register" element={<ClientRegister />} />
           <Route path="/Coach-Register" element={<CoachRegister />} />
           <Route path="/Dashboard" element={<Protected><Dashboard /></Protected>} />
+          <Route path="/User-About" element={<Protected><AboutLoggedIn /></Protected>} />
+          <Route path="/User-Privacy" element={<Protected><PrivacyLoggedIn /></Protected>} />
+          <Route path="/User-Contact" element={<Protected><ContactLoggedIn /></Protected>} />
         </Routes>
       </Router>
     </AuthContext>

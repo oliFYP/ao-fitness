@@ -5,6 +5,7 @@ import db from '../firebaseConfig';
 import { useNavigate } from 'react-router-dom';
 import PhoneInput from 'react-phone-input-2';
 import 'react-phone-input-2/lib/style.css'; 
+import { Country } from 'country-state-city';
 
 
 function RegisterContainer() {
@@ -21,6 +22,10 @@ function RegisterContainer() {
   const navigate = useNavigate();
 
   const auth = getAuth();
+
+  const countryData = Country.getAllCountries();
+
+  const [selectedCountry, setSelectedCountry] = useState(countryData[0].name);
 
   useEffect(() => {
     const delayTimeout = setTimeout(() => {
@@ -195,7 +200,7 @@ function RegisterContainer() {
                   color: 'white', 
                 },
               }}
-              country={'us'}
+              country={'gb'}
               value={phone}
        
              
@@ -207,7 +212,18 @@ function RegisterContainer() {
         <label htmlFor="country" className="select-none block mb-2 mt-6 text-black font-bold">
           Country
         </label>
-        <input type="text" id="country" className="w-full rounded border p-2 mb-4 bg-gray-800 bg-opacity-50 text-white" />
+        <select
+        id="country"
+        className="w-full rounded border p-2 mb-4 bg-gray-800 bg-opacity-50 text-white"
+        value={selectedCountry}
+        onChange={(e) => setSelectedCountry(e.target.value)}
+>
+  {countryData.map((country, index) => (
+    <option key={index} value={country.name}>
+      {country.name}
+    </option>
+  ))}
+</select>
 
         <label htmlFor="city" className="select-none block mb-2 text-black font-bold">
           City
