@@ -3,6 +3,9 @@ import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
 import { addDoc, collection } from 'firebase/firestore';
 import db from '../firebaseConfig';
 import { useNavigate } from 'react-router-dom';
+import PhoneInput from 'react-phone-input-2';
+import 'react-phone-input-2/lib/style.css'; 
+
 
 function RegisterContainer() {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -14,6 +17,7 @@ function RegisterContainer() {
   const [gender, setGender] = useState('');
   const [passwordsMatch, setPasswordsMatch] = useState(true);
   const [hasNonNumericCharacters, setHasNonNumericCharacters] = useState(false);
+  const [phone, setPhone] = useState('');
   const navigate = useNavigate();
 
   const auth = getAuth();
@@ -43,9 +47,11 @@ function RegisterContainer() {
     setPasswordsMatch(event.target.value === password);
   };
 
-  const handlePhoneChange = (event) => {
-    setHasNonNumericCharacters(event.target.value.match(/[^0-9]/) !== null); 
+  const handlePhoneChange = (value) => {
+    setPhone(value);
+    setHasNonNumericCharacters(value.match(/[^0-9]/) !== null);
   };
+
   const handleGenderChange = (event) => {
     setGender(event.target.value);
   };
@@ -104,12 +110,12 @@ function RegisterContainer() {
 
   return (
 
-    <section className={`relative min-h-screen w-full flex items-center justify-center bg-black bg-opacity-50 ${isLoaded ? 'opacity-100 transition-all duration-1000 ease-out' : 'opacity-0'}`}>
-      <div className="max-w-2xl w-full h-auto mt-10 mb-10 m-1 p-6 bg-white bg-opacity-50 backdrop-blur-lg rounded-lg grid grid-cols-2 gap-4">
-      <div className="col-span-2 mb-4">
-        <h2 className="select-none text-2xl font-bold text-black">Coach Register</h2>
-      </div>
-      <div>
+    <section className="relative min-h-screen w-full flex items-center justify-center bg-black bg-opacity-50">
+      <div className="max-w-2xl w-full mt-10 mb-10 m-1 p-6 bg-white bg-opacity-50 backdrop-blur-lg rounded-lg">
+        <h1 className="text-2xl text-center text-black font-bold mb-4">Register</h1> 
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          
+          <div>
         <label htmlFor="name" className="select-none block mb-2 text-black font-bold">
           Name
         </label>
@@ -149,6 +155,7 @@ function RegisterContainer() {
           />
       </div>
       <div>
+     
       <label htmlFor="gender" className="select-none block mb-2 text-black font-bold">
           Gender
         </label>
@@ -169,16 +176,35 @@ function RegisterContainer() {
         </label>
         <input type="date" id="dob" className="w-full rounded border p-2 mb-4 bg-gray-800 bg-opacity-50 text-white" max={maxDOBFormatted} />
 
-        <label htmlFor="phone" className={`select-none block mb-2 font-bold ${hasNonNumericCharacters ? 'text-red-500' : 'text-black'}`}> 
-      Phone
-    </label>
-    <input
-      type="tel"
-      id="phone"
-      className={`w-full rounded border p-2 mb-4 bg-gray-800 bg-opacity-50 ${hasNonNumericCharacters ? 'text-red-500' : 'text-white'}`} 
-      onChange={handlePhoneChange}
-    />
-        <label htmlFor="country" className="select-none block mb-2 text-black font-bold">
+        <label htmlFor="phone" className={`select-none block mb-2 font-bold ${hasNonNumericCharacters ? 'text-red-500' : 'text-black'}`}>
+  Phone
+</label>
+    
+<div className="flex">
+            <PhoneInput
+              inputProps={{
+                name: 'phone',
+                id: 'phone',
+                required: true,
+                autoFocus: false,
+                style: {
+                  width: '100%',
+                  borderRadius: '0.25rem',
+                 
+                  backgroundColor: 'rgba(51, 51, 51, 0.5)',
+                  color: 'white', 
+                },
+              }}
+              country={'us'}
+              value={phone}
+       
+             
+              onChange={handlePhoneChange}
+            />
+          </div>
+
+
+        <label htmlFor="country" className="select-none block mb-2 mt-6 text-black font-bold">
           Country
         </label>
         <input type="text" id="country" className="w-full rounded border p-2 mb-4 bg-gray-800 bg-opacity-50 text-white" />
@@ -188,14 +214,18 @@ function RegisterContainer() {
         </label>
         <input type="text" id="city" className="w-full rounded border p-2 mb-4 bg-gray-800 bg-opacity-50 text-white" />
       </div>
+      </div>
+      <div className="align-center">
+      <div className="flex justify-center"> 
       <button
-      onClick={() => {handleSignUp()}}
-      type="submit"
-      className="col-span-2 bg-black text-white py-2 px-4 rounded"
-       
-    >
-      Register
-    </button>
+        onClick={() => { handleSignUp() }}
+        type="submit"
+        className="bg-black text-white font-bold py-2 px-10 rounded"
+      >
+        Register
+      </button>
+    </div>
+    </div>
     </div>
   </section>
   );

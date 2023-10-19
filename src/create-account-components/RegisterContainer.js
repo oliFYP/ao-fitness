@@ -3,7 +3,8 @@ import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
 import { addDoc, collection } from 'firebase/firestore';
 import db from '../firebaseConfig';
 import { useNavigate } from 'react-router-dom';
-
+import PhoneInput from 'react-phone-input-2';
+import 'react-phone-input-2/lib/style.css'; 
 
 
 
@@ -20,6 +21,7 @@ function RegisterContainer() {
   const [confirmPassword, setConfirmPassword] = useState('');
   const [passwordsMatch, setPasswordsMatch] = useState(true);
   const [hasNonNumericCharacters, setHasNonNumericCharacters] = useState(false);
+  const [phone, setPhone] = useState('');
   const navigate = useNavigate();
 
   const auth = getAuth();
@@ -49,9 +51,11 @@ function RegisterContainer() {
     setPasswordsMatch(event.target.value === password);
   };
 
-  const handlePhoneChange = (event) => {
-    setHasNonNumericCharacters(event.target.value.match(/[^0-9]/) !== null); 
+  const handlePhoneChange = (value) => {
+    setPhone(value);
+    setHasNonNumericCharacters(value.match(/[^0-9]/) !== null);
   };
+
   const handleGenderChange = (event) => {
     setGender(event.target.value);
   };
@@ -111,97 +115,124 @@ function RegisterContainer() {
   
  
   return (
-    <section className={`relative min-h-screen w-full flex items-center justify-center bg-black bg-opacity-50 ${isLoaded ? 'opacity-100 transition-all duration-1000 ease-out' : 'opacity-0'}`}>
-    
-      <div className="max-w-2xl w-full h-auto mt-10 mb-10 m-1 p-6 bg-black bg-opacity-50 backdrop-blur-lg rounded-lg grid grid-cols-2 gap-4">
-    
-        <div className="col-span-2 mb-4">
-        <h2 className="select-none text-2xl font-bold text-white">Client Register</h2>
-      </div>
-      <div>
-        <label htmlFor="name" className="select-none block mb-2 text-white font-bold">
-          Name
-        </label>
-        <input type="text" id="name" className="w-full rounded border p-2 mb-4 bg-gray-800 text-white" />
+    <section className="relative min-h-screen w-full flex items-center justify-center bg-black bg-opacity-50">
+    <div className="max-w-2xl w-full mt-10 mb-10 m-1 p-6  bg-black bg-opacity-50 backdrop-blur-lg rounded-lg">
+      <h1 className="text-2xl text-center text-white font-bold mb-4">Register</h1> 
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        
+        <div>
+      <label htmlFor="name" className="select-none block mb-2 text-white font-bold">
+        Name
+      </label>
+      <input type="text" id="name" className="w-full rounded border p-2 mb-4 bg-gray-800 bg-opacity-50 text-white" />
 
-        <label htmlFor="surname" className="select-none block mb-2 text-white font-bold">
-          Surname
-        </label>
-        <input type="text" id="surname" className="w-full rounded border p-2 mb-4 bg-gray-800 text-white" />
+      <label htmlFor="surname" className="select-none block mb-2 text-white font-bold">
+        Surname
+      </label>
+      <input type="text" id="surname" className="w-full rounded border p-2 mb-4 bg-gray-800 bg-opacity-50 text-white" />
 
-        <label htmlFor="email" className={`select-none block mb-2 font-bold ${isEmailValid ? 'text-white' : 'text-red-500'}`}>
-          Email
-        </label>
-        <input type="email"
-            id="email"
-            className={`w-full rounded border p-2 mb-4 bg-gray-800 ${isEmailValid ? 'text-white' : 'text-red-500'}`}
-            onChange={handleEmailChange}/>
+      <label htmlFor="email" className={`select-none block mb-2 font-bold ${isEmailValid ? 'text-white' : 'text-red-500'}`}>
+        Email
+      </label>
+      <input type="email"
+          id="email"
+          className={`w-full rounded border p-2 mb-4 bg-gray-800 bg-opacity-50 ${isEmailValid ? 'text-white' : 'text-red-500'}`}
+          onChange={handleEmailChange}/>
 
-        <label htmlFor="password" className={`select-none block mb-2 font-bold ${isPasswordValid ? 'text-white' : 'text-red-500'}`}>
-            Password
-          </label>
+
+<label htmlFor="password" className={`select-none block mb-2 font-bold ${isPasswordValid ? 'text-white' : 'text-red-500'}`}>
+          Password
+        </label>
+      <input
+          type="password"
+          id="password"
+          className={`w-full rounded border p-2 mb-4 bg-gray-800 bg-opacity-50 ${isPasswordValid ? 'text-white' : 'text-red-500'}`}
+          onChange={handlePasswordChange}
+        />
+        <label htmlFor="confirmPassword" className={`select-none block mb-2 font-bold ${passwordsMatch ? 'text-white' : 'text-red-500'}`}>
+          Confirm Password
+        </label>
         <input
-            type="password"
-            id="password"
-            className={`w-full rounded border p-2 mb-4 bg-gray-800 font-bold ${isPasswordValid ? 'text-white' : 'text-red-500'}`}
-            onChange={handlePasswordChange}
-          />
-          <label htmlFor="confirmPassword" className={`select-none block mb-2 font-bold ${passwordsMatch ? 'text-white' : 'text-red-500'}`}>
-            Confirm Password
-          </label>
-          <input
-            type="password"
-            id="confirmPassword"
-            className={`w-full rounded border p-2 mb-4 bg-gray-800 ${passwordsMatch ? 'text-white' : 'text-red-500'}`}
-            onChange={handleConfirmPasswordChange}
-          />
-      </div>
-      <div>
-      <label htmlFor="gender" className="select-none block mb-2 text-white font-bold">
-          Gender
-        </label>
-        <select
-          id="gender"
-          className="w-full rounded border p-2 mb-4 bg-gray-800 bg-opacity-50 text-white"
-          onChange={handleGenderChange}
-          value={gender}
-        >
-          <option value="">Select gender</option>
-          <option value="male">Male</option>
-          <option value="female">Female</option>
-          <option value="other">Other</option>
-        </select>
-
-        <label htmlFor="dob" className="select-none block mb-2 text-white font-bold">
-          Date of Birth
-        </label>
-        <input type="date" id="dob" className="w-full rounded border p-2 mb-4 bg-gray-800 text-white" max={maxDOBFormatted} />
-
-        <label htmlFor="phone" className={`select-none block mb-2 font-bold ${hasNonNumericCharacters ? 'text-red-500' : 'text-white'}`}> 
-      Phone
-    </label>
-    <input
-      type="tel"
-      id="phone"
-      className={`w-full rounded border p-2 mb-4 bg-gray-800 ${hasNonNumericCharacters ? 'text-red-500' : 'text-white'}`} 
-      onChange={handlePhoneChange}
-    />
-
-        <label htmlFor="country" className="select-none block mb-2 text-white font-bold">
-          Country
-        </label>
-        <input type="text" id="country" className="w-full rounded border p-2 mb-4 bg-gray-800 text-white" />
-
-        <label htmlFor="city" className="select-none block mb-2 text-white font-bold">
-          City
-        </label>
-        <input type="text" id="city" className="w-full rounded border p-2 mb-4 bg-gray-800 text-white" />
-      </div>
-      <button onClick={() => {handleSignUp()}} type="submit" className="select-none col-span-2 bg-black text-white py-2 px-4 rounded">
-        Register
-      </button>
+          type="password"
+          id="confirmPassword"
+          className={`w-full rounded border p-2 mb-4 bg-gray-800 bg-opacity-50  ${passwordsMatch ? 'text-white' : 'text-red-500'}`}
+          onChange={handleConfirmPasswordChange}
+        />
     </div>
-  </section>
+    <div>
+   
+    <label htmlFor="gender" className="select-none block mb-2 text-white font-bold">
+        Gender
+      </label>
+      <select
+        id="gender"
+        className="w-full rounded border p-2 mb-4 bg-gray-800 bg-opacity-50 text-white"
+        onChange={handleGenderChange}
+        value={gender}
+      >
+        <option value="">Select gender</option>
+        <option value="male">Male</option>
+        <option value="female">Female</option>
+        <option value="other">Other</option>
+      </select>
+
+      <label htmlFor="dob" className="select-none block mb-2 text-white font-bold" >
+        Date of Birth
+      </label>
+      <input type="date" id="dob" className="w-full rounded border p-2 mb-4 bg-gray-800 bg-opacity-50 text-white" max={maxDOBFormatted} />
+
+      <label htmlFor="phone" className={`select-none block mb-2 font-bold ${hasNonNumericCharacters ? 'text-red-500' : 'text-black'}`}>
+Phone
+</label>
+  
+<div className="flex">
+          <PhoneInput
+            inputProps={{
+              name: 'phone',
+              id: 'phone',
+              required: true,
+              autoFocus: false,
+              style: {
+                width: '100%',
+                borderRadius: '0.25rem',
+               
+                backgroundColor: 'rgba(51, 51, 51, 0.5)',
+                color: 'white', 
+              },
+            }}
+            country={'us'}
+            value={phone}
+     
+           
+            onChange={handlePhoneChange}
+          />
+        </div>
+
+
+      <label htmlFor="country" className="select-none block mb-2 mt-6 text-white font-bold">
+        Country
+      </label>
+      <input type="text" id="country" className="w-full rounded border p-2 mb-4 bg-gray-800 bg-opacity-50 text-white" />
+
+      <label htmlFor="city" className="select-none block mb-2 text-white font-bold">
+        City
+      </label>
+      <input type="text" id="city" className="w-full rounded border p-2 mb-4 bg-gray-800 bg-opacity-50 text-white" />
+    </div>
+    </div>
+    <div className="align-center">
+    <div className="flex justify-center"> 
+    <button
+  onClick={() => { handleSignUp() }}
+  type="submit"
+  class="bg-white text-black font-bold py-2 px-10 rounded" 
+>
+  Register
+</button>
+  </div>
+  </div>
+  </div>
+</section>
   );
 }
 
