@@ -181,7 +181,7 @@ function RegisterContainer() {
       </label>
       <input type="date" id="dob" className="w-full rounded border p-2 mb-4 bg-gray-800 bg-opacity-50 text-white" max={maxDOBFormatted} />
 
-      <label htmlFor="phone" className={`select-none block mb-2 font-bold ${hasNonNumericCharacters ? 'text-red-500' : 'text-black'}`}>
+      <label htmlFor="phone" className={`select-none block mb-2 font-bold ${hasNonNumericCharacters ? 'text-red-500' : 'text-white'}`}>
 Phone
 </label>
   
