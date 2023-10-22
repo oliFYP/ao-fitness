@@ -11,6 +11,9 @@ function LoginContainer() {
   const [password,setPassword] = useState('');
   const auth = getAuth();
 
+  const navigateToHome = () => {
+    navigate('/');
+  };
   useEffect(() => {
   
     const delayTimeout = setTimeout(() => {
@@ -57,7 +60,8 @@ function LoginContainer() {
     <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
       <img
         src={Logo}
-        className="h-12 mt-1 sm:h-15 sm:mt-2"
+        onClick={(e) => { navigateToHome(e) }}
+        className="h-12 mt-1 sm:h-15 sm:mt-2 cursor-pointer"
       />
       <h2 className="select-none text-black text-center text-2xl mb-4 font-bold">Coach Login</h2>
     </div>
