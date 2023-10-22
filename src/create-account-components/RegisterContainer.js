@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
+import { getAuth, createUserWithEmailAndPassword, sendEmailVerification } from 'firebase/auth';
 import { addDoc, collection } from 'firebase/firestore';
 import db from '../firebaseConfig';
 import { useNavigate } from 'react-router-dom';
@@ -97,14 +97,20 @@ function RegisterContainer() {
     try {
       const userCredentials = await createUserWithEmailAndPassword(auth, email, password);
       const user = userCredentials.user;
-  
+
+      await sendEmailVerification(auth.currentUser).then(() =>{
+        alert("Email verification link sent!")
+
+        }
+      );
+
       delete formData.password;
       delete formData.confirmPassword;
   
       await addDoc(collection(db, 'Users'), {
         ...formData,
       });
-  
+    
       console.log('User registered successfully:', user);
       navigate('/Dashboard');
     } catch (error) {
