@@ -6,9 +6,7 @@ import TopBar from '../privacy-components/topbar'
 function RegisterPage() {
   return (
     <div>
-      <TopBar/>
       <MainSection/>
-      <Footer/>
     </div>
   );
 }
