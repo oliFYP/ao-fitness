@@ -22,7 +22,7 @@ function MainSection() {
       />
       <div className="absolute top-1/2 left-0 transform -translate-y-1/2 p-4 text-white ">
     <h1 className="font-bold text-4xl lg:text-5xl ">Inspire people</h1>
-    <p>Inspire as many clients as you can</p>
+    <p>Expand your reach as a fitness coach</p>
   </div>
     </div>
     

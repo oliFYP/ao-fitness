@@ -136,7 +136,7 @@ function RegisterContainer() {
           onClick={(e) => { navigateToHome(e) }}
           className="h-12 mt-1 sm:h-15 sm:mt-2 cursor-pointer"
         />
-        <h2 className="select-none text-white text-center text-2xl mb-4 font-bold">Customer Login</h2>
+        <h2 className="select-none text-white text-center text-2xl mb-4 font-bold">Customer Sign up</h2>
       </div>
       <div className="mb-4">
       <label htmlFor="name" className="select-none block mb-2 text-left text-white font-bold">

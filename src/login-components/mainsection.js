@@ -45,8 +45,8 @@ function MainSection() {
           alt="Image"
         />
         <div className="absolute top-1/2 left-0 transform -translate-y-1/2 p-4 text-white">
-          <h1 className="font-bold text-4xl lg:text-5xl">Find the right coach</h1>
-          <p>Find the one that will inspire you and push you to your limits</p>
+          <h1 className="font-bold text-2xl  lg:text-4xl">Discover your perfect fitness coach</h1>
+          <p>Achieve your goals with expert guidance</p>
         </div>
       </div>
 
