@@ -1,19 +1,24 @@
 {
   "files": {
     "main.css": "/ao-fitness/static/css/main.e4e46009.css",
-    "main.js": "/ao-fitness/static/js/main.ced1f13b.js",
+    "main.js": "/ao-fitness/static/js/main.42b0796a.js",
+    "static/media/fitness.jpg": "/ao-fitness/static/media/fitness.8255ba2345b151616439.jpg",
+    "static/media/motivation.jpg": "/ao-fitness/static/media/motivation.f799f49c7cc8ec9258a9.jpg",
     "static/media/asmaoli.png": "/ao-fitness/static/media/asmaoli.2cd1cecb7b46071d5af7.png",
-    "static/media/client-side.jpg": "/ao-fitness/static/media/client-side.523a5103c295dc820974.jpg",
+    "static/media/boxer.jpg": "/ao-fitness/static/media/boxer.55973b69f90e94429825.jpg",
+    "static/media/fitness-coach.jpg": "/ao-fitness/static/media/fitness-coach.d0be402df73364f09ae3.jpg",
+    "static/media/client-side.jpg": "/ao-fitness/static/media/client-side.079457a3b42b261e3ed0.jpg",
     "static/media/coach-side.jpg": "/ao-fitness/static/media/coach-side.c4e5fc04b7af2200aac3.jpg",
+    "static/media/client-fitness.jpg": "/ao-fitness/static/media/client-fitness.00e3400bbd98a4e5bf57.jpg",
     "static/media/coach.jpg": "/ao-fitness/static/media/coach.0b6689eeb9dca48c6dec.jpg",
     "static/media/logo.png": "/ao-fitness/static/media/logo.2c34624ef1296eeeb603.png",
     "static/media/Logo-black.png": "/ao-fitness/static/media/Logo-black.873b9ff6a4797a72b7e4.png",
     "index.html": "/ao-fitness/index.html",
     "main.e4e46009.css.map": "/ao-fitness/static/css/main.e4e46009.css.map",
-    "main.ced1f13b.js.map": "/ao-fitness/static/js/main.ced1f13b.js.map"
+    "main.42b0796a.js.map": "/ao-fitness/static/js/main.42b0796a.js.map"
   },
   "entrypoints": [
     "static/css/main.e4e46009.css",
-    "static/js/main.ced1f13b.js"
+    "static/js/main.42b0796a.js"
   ]
 }
