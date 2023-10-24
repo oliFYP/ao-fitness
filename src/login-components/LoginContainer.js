@@ -50,7 +50,7 @@ function LoginContainer() {
     }
   }
   return (
-    <div className="w-full md:w-1/2 bg-black text-white p-8 md:p-12" style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', minHeight: '100vh' }}>
+    <div className="w-full md:w-1/2 bg-black text-white p-8 md:p-12 " style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', minHeight: '100vh' }}>
   <div style={{ textAlign: 'center' }}>
     <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
       <img
@@ -68,7 +68,7 @@ function LoginContainer() {
         onChange={(e) => { setEmail(e.target.value) }}
         type="email"
         id="email"
-        className="w-80 px-3 py-2 bg-black border-b text-white"
+        className="w-80 px-3 py-2 bg-black border-b text-white focus:outline-none"
         placeholder="Enter your email"
       />
     </div>
@@ -80,7 +80,7 @@ function LoginContainer() {
         onChange={(e) => { setPassword(e.target.value) }}
         type="password"
         id="password"
-        className="w-80 px-3 py-2 bg-black border-b text-white"
+        className="w-80 px-3 py-2 bg-black border-b text-white focus:outline-none"
         placeholder="Enter your password"
       />
     </div>

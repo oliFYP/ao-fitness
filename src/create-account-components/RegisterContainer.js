@@ -258,7 +258,7 @@ Phone
     <button
   onClick={() => { handleSignUp() }}
   type="submit"
-  class="bg-white text-black font-bold py-2 px-10 rounded" 
+  class="bg-white text-black font-bold py-2 px-10 rounded-3xl" 
 >
   Register
 </button>

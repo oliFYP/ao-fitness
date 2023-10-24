@@ -73,7 +73,7 @@ function LoginContainer() {
         onChange={(e) => { setEmail(e.target.value) }}
         type="email"
         id="email"
-        className="w-80 px-3 py-2 bg-white border-b  text-black"
+        className="w-80 px-3 py-2 bg-white border-b  text-black focus:outline-none"
         placeholder="Enter your email"
       />
     </div>
@@ -85,7 +85,7 @@ function LoginContainer() {
         onChange={(e) => { setPassword(e.target.value) }}
         type="password"
         id="password"
-        className="w-80 px-3 py-2 bg-white border-b text-black"
+        className="w-80 px-3 py-2 bg-white border-b text-black focus:outline-none"
         placeholder="Enter your password"
       />
     </div>

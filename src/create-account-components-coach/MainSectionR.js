@@ -1,12 +1,19 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import coach from '../img/coach-side.jpg';
 import Container from './RegisterContainer'
 
 function MainSection() {
- 
+  const [loaded, setLoaded] = useState(false);
+  useEffect(() => {
+    const delay = 200;
+    const timer = setTimeout(() => {
+      setLoaded(true);
+    }, delay);
 
+    return () => clearTimeout(timer);
+  }, []); 
   return (
-    <div className="min-h-screen flex">
+    <div className= {`min-h-screen flex transition-opacity duration-500 ${loaded ? 'opacity-100' : 'opacity-0'}`}>
   
     <div className="hidden md:block md:w-1/2">
       <img

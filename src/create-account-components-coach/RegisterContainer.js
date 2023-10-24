@@ -249,7 +249,7 @@ function RegisterContainer() {
       <button
         onClick={() => { handleSignUp() }}
         type="submit"
-        className="bg-black text-white font-bold py-2 px-10 rounded"
+        className="bg-black text-white font-bold py-2 px-10 rounded-3xl"
       >
         Register
       </button>
