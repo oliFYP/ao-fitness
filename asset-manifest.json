@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/ao-fitness/static/css/main.4dec4970.css",
-    "main.js": "/ao-fitness/static/js/main.9782a290.js",
+    "main.css": "/ao-fitness/static/css/main.b3c415a4.css",
+    "main.js": "/ao-fitness/static/js/main.5219ad4a.js",
     "static/media/fitness.jpg": "/ao-fitness/static/media/fitness.8255ba2345b151616439.jpg",
     "static/media/motivation.jpg": "/ao-fitness/static/media/motivation.f799f49c7cc8ec9258a9.jpg",
     "static/media/asmaoli.png": "/ao-fitness/static/media/asmaoli.2cd1cecb7b46071d5af7.png",
@@ -14,11 +14,11 @@
     "static/media/logo.png": "/ao-fitness/static/media/logo.2c34624ef1296eeeb603.png",
     "static/media/Logo-black.png": "/ao-fitness/static/media/Logo-black.873b9ff6a4797a72b7e4.png",
     "index.html": "/ao-fitness/index.html",
-    "main.4dec4970.css.map": "/ao-fitness/static/css/main.4dec4970.css.map",
-    "main.9782a290.js.map": "/ao-fitness/static/js/main.9782a290.js.map"
+    "main.b3c415a4.css.map": "/ao-fitness/static/css/main.b3c415a4.css.map",
+    "main.5219ad4a.js.map": "/ao-fitness/static/js/main.5219ad4a.js.map"
   },
   "entrypoints": [
-    "static/css/main.4dec4970.css",
-    "static/js/main.9782a290.js"
+    "static/css/main.b3c415a4.css",
+    "static/js/main.5219ad4a.js"
   ]
 }
