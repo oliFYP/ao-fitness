@@ -40,7 +40,7 @@ const SearchBox = () => {
   }, [searchQuery]);
   return (
     <div className="flex">
-      <div className="w-full p-5 pb-6  mt-10 mb-10 lg:mt-0 lg:mb-0 pt-0 bg-gradient-to-br from-slate-900 to-slate-500 rounded-lg text-center">
+      <div className="w-full lg:w-auto p-5 pb-6  mt-10 mb-10 lg:mr-10 lg:ml-10 lg:mt-0 lg:mb-0 pt-0 bg-gradient-to-br from-slate-900 to-slate-500 rounded-lg text-center">
         <h2 className="text-white text-2xl p-4 mt-4 font-bold">
           Search for a Coach
         </h2>
